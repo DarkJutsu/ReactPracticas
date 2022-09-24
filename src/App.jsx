@@ -1,15 +1,20 @@
-import { useState } from 'react';
 import './App.css';
-import { Greeting } from './components/pure/Greeting';
-import { GreetingFunc } from './components/pure/GreetingFunc';
+import { useState } from 'react';
+import TaskList from './components/container/TaskList';
+import { ExampleHook } from './hooks/exampleHook';
+import { Example2Hook } from './hooks/example2Hook';
+import { ComponentContext } from './hooks/example3Hook';
+import { PropsChildren } from './hooks/examplePropsChildren';
 
 function App() {
 	const [count, setCount] = useState(0);
 
 	return (
 		<div className='App'>
-      <GreetingFunc name='Junana' />
-			{/* <Greeting name='Juana' /> */}
+      {/* <TaskList /> */}
+			<PropsChildren nombre='Juan' >
+				<h4>Hola</h4>
+			</PropsChildren>
 		</div>
 	);
 }
