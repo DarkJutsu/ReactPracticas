@@ -1,5 +1,4 @@
-import 'bootstrap/dist/css/bootstrap.css'
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.css';
 import { useState } from 'react';
 import DefaultTask from './components/container/TaskList';
 import { ExampleHook } from './hooks/exampleHook';
@@ -7,13 +6,19 @@ import { Example2Hook } from './hooks/example2Hook';
 import { ComponentContext } from './hooks/example3Hook';
 import { PropsChildren } from './hooks/examplePropsChildren';
 import { AllCycles } from './hooks/LifeCycle/AllCycle';
+import { Father } from './components/container/Father';
 
 function App() {
-	const [count, setCount] = useState(0);
-
 	return (
-		<div className='App'>
-			<DefaultTask />
+		<div className="bg-zinc-200 h-screen p-3">
+			<div className='container font-mono text-xl'>
+				<h1 className='text-zinc-800 text-5xl'>
+					Your Task 
+					<div className='w-96 h-0.5 bg-black'></div>
+				</h1>
+				{/* <DefaultTask /> */}
+				<Father />
+			</div>
 		</div>
 	);
 }

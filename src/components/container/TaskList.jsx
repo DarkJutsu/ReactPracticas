@@ -10,13 +10,25 @@ const TaskList = () => {
 		true,
 		LEVELS.NORMAL
 	);
+	const defaultTask2 = new TaskClass(
+		'Example 2',
+		'Default description',
+		false,
+		LEVELS.URGENT
+	);
+	const defaultTask3 = new TaskClass(
+		'Example 3',
+		'Default description',
+		true,
+		LEVELS.BLOCKING
+	);
 
-	const [tasks, setTasks] = useState([defaultTask]);
+	const [tasks, setTasks] = useState([defaultTask, defaultTask2, defaultTask3]);
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		console.log('Task state has been modified');
-		setLoading(false)
+		setLoading(false);
 		return () => {
 			console.log('Task list component is going to unmount');
 		};
@@ -27,9 +39,14 @@ const TaskList = () => {
 	};
 
 	return (
-		<div>
-			<h1>Your Task</h1>
-			<Task task={defaultTask} />
+		<div className='grid grid-cols-4 gap-2 pt-4'>
+			{
+				tasks.map((task, i)=>{
+					return(
+						<Task key={i} task={task} />
+					)
+				})
+			}
 		</div>
 	);
 };
