@@ -5,9 +5,10 @@ import { BsToggleOff, BsToggleOn } from 'react-icons/bs';
 import { MdDeleteForever } from 'react-icons/md';
 import { LEVELS } from '../../models/levels.enum';
 
-const Task = ({ task }) => {
+const Task = ({ task, complete, remove }) => {
 	useEffect(() => {
 		console.log('Create task');
+		
 		return () => {
 			console.log(`Task: ${task.name} is going to`);
 		};
@@ -46,19 +47,30 @@ const Task = ({ task }) => {
 			<h5 className='text-slate-600 pl-2 flex gap-2 mt-0.5'>
 				This task is:
 				{task.completed ? (
-					<BsToggleOn className='text-slate-600 text-2xl' />
+					<BsToggleOn
+						onClick={() => complete(task)}
+						className='text-slate-600 text-2xl cursor-pointer'
+					/>
 				) : (
-					<BsToggleOff className='text-slate-600 text-2xl' />
+					<BsToggleOff
+						onClick={() => complete(task)}
+						className='text-slate-600 text-2xl cursor-pointer'
+					/>
 				)}
 			</h5>
 			<div className='pl-2 mt-3'>
-					<MdDeleteForever className='text-red-400 text-3xl' />
+				<MdDeleteForever
+					onClick={() => remove(task)}
+					className='text-red-400 text-3xl cursor-pointer'
+				/>
 			</div>
 		</div>
 	);
 };
 Task.propType = {
-	task: PropType.instanceOf(TaskClass),
+	task: PropType.instanceOf(TaskClass).isRequired,
+	complete: PropType.func.isRequired,
+	remove: PropType.func.isRequired,
 };
 
 export default Task;
