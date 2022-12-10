@@ -8,7 +8,7 @@ import { LEVELS } from '../../models/levels.enum';
 const Task = ({ task, complete, remove }) => {
 	useEffect(() => {
 		console.log('Create task');
-		
+
 		return () => {
 			console.log(`Task: ${task.name} is going to`);
 		};
@@ -38,13 +38,19 @@ const Task = ({ task, complete, remove }) => {
 	}
 
 	return (
-		<div>
+		<div
+			className={
+				!task.completed
+					? 'font-semibold bg-red-100 p-2'
+					: 'line-through bg-green-200 rounded-md p-2'
+			}
+		>
 			<h1 className='text-slate-800 py-2'>{task.name}</h1>
-			<h3 className='text-slate-600 pl-2 pb-2'>{task.description}</h3>
+			<h3 className='text-slate-600 pl-2 my-3 h-24 overflow-auto'>{task.description}</h3>
 			<h5 className='text-slate-600 pl-2 flex gap-2'>
 				State: {taskLevelBadge()}
 			</h5>
-			<h5 className='text-slate-600 pl-2 flex gap-2 mt-0.5'>
+			<h5 className='text-slate-600 pl-2 flex gap-2 mt-0.5 select-none'>
 				This task is:
 				{task.completed ? (
 					<BsToggleOn
