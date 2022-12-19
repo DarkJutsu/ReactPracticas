@@ -1,4 +1,5 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
 const loginSchema = Yup.object().shape({
@@ -9,6 +10,8 @@ const loginSchema = Yup.object().shape({
 });
 
 export const LoginFormik = () => {
+	const navegate = useNavigate();
+
 	const initialCredentials = {
 		email: '',
 		passwd: '',
@@ -23,7 +26,8 @@ export const LoginFormik = () => {
 				onSubmit={async values => {
 					await new Promise(r => setTimeout(r, 1000));
 					alert(JSON.stringify(values, null, 2));
-					localStorage.setItem('credentials', values);
+					await localStorage.setItem('credentials', values);
+					navegate('/about');
 				}}
 			>
 				{({
@@ -38,13 +42,26 @@ export const LoginFormik = () => {
 						<label htmlFor='email'>Email</label>
 						<Field id='email' name='email' type='email' placeholder='Email' />
 						{errors.email && touched.email && (
-							<ErrorMessage className='text-red-500' component='span' name='email' />
+							<ErrorMessage
+								className='text-red-500'
+								component='span'
+								name='email'
+							/>
 						)}
 
 						<label htmlFor='passwd'>Password</label>
-						<Field id='passwd' name='passwd' type='password' placeholder='Password' />
+						<Field
+							id='passwd'
+							name='passwd'
+							type='password'
+							placeholder='Password'
+						/>
 						{errors.passwd && touched.passwd && (
-							<ErrorMessage className='text-red-500' component='span' name='passwd' />
+							<ErrorMessage
+								className='text-red-500'
+								component='span'
+								name='passwd'
+							/>
 						)}
 
 						<button className='bg-green-500 mt-3 p-2 rounded-md' type='submit'>

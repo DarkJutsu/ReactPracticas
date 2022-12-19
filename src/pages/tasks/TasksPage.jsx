@@ -1,7 +1,9 @@
-import TaskList from "../../components/container/TaskList"
+import TaskList from '../../components/container/TaskList';
 
-export const TasksPage=()=>{
-  return <div>
-    <TaskList />
-  </div>
-}
+export const TasksPage = () => {
+	return (
+		<div>
+			<TaskList />
+		</div>
+	);
+};

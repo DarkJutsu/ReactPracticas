@@ -46,7 +46,9 @@ const Task = ({ task, complete, remove }) => {
 			}
 		>
 			<h1 className='text-slate-800 py-2'>{task.name}</h1>
-			<h3 className='text-slate-600 pl-2 my-3 h-24 overflow-auto'>{task.description}</h3>
+			<h3 className='text-slate-600 pl-2 my-3 h-24 overflow-auto'>
+				{task.description}
+			</h3>
 			<h5 className='text-slate-600 pl-2 flex gap-2'>
 				State: {taskLevelBadge()}
 			</h5>

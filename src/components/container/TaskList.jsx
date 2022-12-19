@@ -109,8 +109,8 @@ const TaskList = () => {
 				Your Task
 				<div className='w-96 h-0.5 bg-black'></div>
 			</h1>
-			{/* <TaskForm add={addTask} length={tasks.length} /> */}
 			<div className='flex justify-center'>
+				{/* <TaskForm add={addTask} length={tasks.length} /> */}
 				<TaskFormik add={addTask} length={tasks.length} />
 			</div>
 			{loading ? <Spinner /> : <NewTaskList />}
